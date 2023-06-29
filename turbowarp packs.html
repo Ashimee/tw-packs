@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turbowarp Packs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <style>
+        html, head, body {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #000000;
+            color: white;
+        }
+        .button {
+            background:    #666666;
+            border:        4px solid #000000;
+            border-radius: 8px;
+            padding:       10px 25px;
+            color:         #ffffff;
+            display:       inline-block;
+            font:          normal bold 12px/1 "Komika", cursive;
+            text-align:    center;
+        }
+        .button:hover {
+            background:    #6a6a6a;
+        }
+        .button:active {
+            background: #5b5b5b;
+        }
+    </style>
+</head>
+<body>
+    <div id="loader">Load Pack:<br><select id="selector"></select><button class="button" onclick="loadPack()">Open Pack!</button></div>
+    <div id="main" hidden>
+        <div id="pack_container"></div><br>
+        <button onclick="backToSelection()" class="button"><img src="./arrow-bar-left.svg"></img> Back</button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" crossorigin="anonymous"></script>
+    <script>
+        const PACKS = [];
+        function register_pack(name, after_name, maintainer, description, extensions, version, dangerous, use_turbowarpUnlocked) {
+            var pack = {'name': name+' Pack '+after_name, description, maintainer, extensions, version, dangerous, 'uses_twu': use_turbowarpUnlocked};
+            PACKS.push(pack);
+            return pack;
+        }
+        function _extension(url, name, creator, profile) {
+            return {url, name, creator, profile};
+        }
+
+
+        //REGISTER
+        function register_packs() {
+
+            // ADD PACK FUNCTIONS HERE
+            /*
+            register_pack(
+                'Placeholder',
+                '',
+                '0znzw',
+                'A simple placeholder pack.',
+                [
+                    _extension(
+                        'https://survexe1pc.github.io/unsafe-extensions/Placeholder.js',
+                        'Placeholder extension',
+                        '0znzw',
+                        'https://scratch.mit.edu/users/0znzw',
+                    )
+                ],
+                1.0,
+                false,
+                false
+            );
+            */
+            register_pack(
+                'Placeholder',
+                '',
+                '0znzw',
+                'A simple placeholder pack.',
+                [
+                    _extension(
+                        'https://survexe1pc.github.io/unsafe-extensions/Placeholder.js',
+                        'Placeholder extension',
+                        '0znzw',
+                        'https://scratch.mit.edu/users/0znzw',
+                    )
+                ],
+                1.0,
+                false,
+                false
+            );
+            register_pack(
+                'Mouse',
+                '',
+                '0znzw',
+                'Utilities for the mouse.',
+                [
+                    _extension(
+                        'https://extensions.turbowarp.org/gamepad.js',
+                        'Gamepad',
+                        'GarboMuffin',
+                        'https://scratch.mit.edu/users/GarboMuffin',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/pointerlock.js',
+                        'Pointerlock',
+                        'GarboMuffin',
+                        'https://scratch.mit.edu/users/GarboMuffin',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/cursor.js',
+                        'Cursor Icons',
+                        'GarboMuffin',
+                        'https://scratch.mit.edu/users/GarboMuffin',
+                    ),
+                ],
+                1.0,
+                false,
+                false
+            );
+            register_pack(
+                'Blocks+',
+                '',
+                '0znzw',
+                'Enhances the built in blocks!',
+                [
+                    _extension(
+                        'https://extensions.turbowarp.org/penplus.js',
+                        'Pen+',
+                        'ObviousAlexC',
+                        'https://scratch.mit.edu/users/pinksheep2917/',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/Lily/ClonesPlus.js',
+                        'Clones+',
+                        'LilyMakesThings',
+                        'https://scratch.mit.edu/users/LilyMakesThings/',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/Lily/LooksPlus.js',
+                        'Looks+',
+                        'LilyMakesThings',
+                        'https://scratch.mit.edu/users/LilyMakesThings/',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/sensingplus.js',
+                        'Sensing+',
+                        'ObviousAlexC',
+                        'https://scratch.mit.edu/users/pinksheep2917/',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/Lily/MoreTimers.js',
+                        'More timers',
+                        'LilyMakesThings',
+                        'https://scratch.mit.edu/users/LilyMakesThings/',
+                    ),
+                ],
+                1.0,
+                false,
+                false
+            );
+            register_pack(
+                'Storage+',
+                '',
+                '0znzw',
+                'Enhanced storage capabilitys.',
+                [
+                    _extension(
+                        'https://extensions.turbowarp.org/files.js',
+                        'Files',
+                        'Garbomuffin',
+                        'https://scratch.mit.edu/users/GarboMuffin',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/localstorage.js',
+                        'Localstorage',
+                        'Garbomuffin',
+                        'https://scratch.mit.edu/users/GarboMuffin',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/Skyhigh173/json.js',
+                        'JSON',
+                        'Skyhigh173',
+                        '#',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/Lily/TempVariables2.js',
+                        'Temporary Variables',
+                        'LilyMakesThings',
+                        'https://scratch.mit.edu/users/LilyMakesThings',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/qxsck/var-and-list.js',
+                        'Lists and Variables',
+                        'qxsck',
+                        '#',
+                    ),
+                    _extension(
+                        'https://extensions.turbowarp.org/vercte/dictionaries.js',
+                        'Dictionarys',
+                        'Vercte',
+                        'https://scratch.mit.edu/users/lolecksdeehaha/',
+                    ),
+                ],
+                1.0,
+                false,
+                false
+            );
+        }
+        //END REGISTER
+
+        function ValidJSON(json) {
+            try {
+                JSON.parse(json);
+            } catch {
+                return false;
+            }
+            return true;
+        }
+        function externalIcons(danger, twu) {
+            function icon(text, tooltip, condition){return(condition ? `<span title="${tooltip}">${text}&nbsp;&nbsp;</span>` : '')};
+            if (!danger && !twu) return '';
+            var icons = '';
+            icons += icon('<img src="./exclamation-circle-fill.svg"></img>', 'This extension-pack uses extensions that are considered dangerous.', danger);
+            icons += icon('<img src="./info-circle-fill.svg"></img>', 'This extension-pack uses extensions that are loader by an external loader called TurbowarpUnlocked.', twu);
+            return icons;
+        }
+        function updateDropdownText(self) {
+            const CLOSE_ARROW = `close <img src="./arrows-angle-contract.svg"></img>`;
+            const OPEN_ARROW = `open <img src="./arrows-angle-expand.svg"></img>`;
+            if (!self.nextElementSibling.hidden) {
+                self.innerHTML = OPEN_ARROW;
+            } else { self.innerHTML = CLOSE_ARROW };
+            return [self, !self.nextElementSibling.hidden]
+        }
+        function setVisibilityNextElm(self) {
+            console.log(self);
+            self[0].nextSibling.hidden = self[1];
+        }
+        function createExtensionList(extensions) {
+            var extension_html = `<button class="button" onclick="setVisibilityNextElm(updateDropdownText(this));">open <img src="./arrows-angle-expand.svg"></img></button><div hidden>`;
+            for (extension in extensions) {
+                extension = extensions[extension];
+                extension_html += `<span>&nbsp;&nbsp;<a href="${extension.url}">${extension.name}</a> by <a href="${extension.profile}">${extension.creator}</a></span><br>`;
+            }
+            extension_html += '</div>';
+            return extension_html;
+        };
+        const pack_selector = document.getElementById('selector');
+        const pack_index = {};
+        const main_elm = document.getElementById('main');
+        const pack_container = document.getElementById('pack_container');
+        const loader_elm = document.getElementById('loader');
+        (function(){
+            register_packs();
+            for (pack in PACKS) {
+                pack_old = pack;
+                pack = PACKS[pack];
+                console.log(pack);
+                const pack_data = pack;
+                const final_div = document.createElement('div');
+                final_div.innerHTML = (`<h2>${pack_data.name}</h2><span>v${pack_data.version}&nbsp;|&nbsp;&nbsp;${pack_data.description}</span><br>Pack Updated by ${pack_data.maintainer}.<br>Extensions: ${externalIcons(pack_data.dangerous, pack_data.uses_twu)}${createExtensionList(pack_data.extensions)}<br><button class="button" onclick="loadPackURI(${pack_old})">Load Pack!</button>`);
+                final_div.hidden = true;
+                pack_container.appendChild(final_div);
+                const selector = document.createElement('option');
+                selector.setAttribute('value', pack_data.name);
+                selector.innerText = pack_data.name;
+                pack_selector.appendChild(selector);
+                pack_index[pack_data.name] = pack_selector.children.length-1;
+            }
+        })();
+        function getSelected() {
+            return pack_selector.value;
+        }
+        function getPackNumber() { return pack_index[getSelected()] };
+        function loadPack() {
+            const pack_no = getPackNumber();
+            pack_container.children[pack_no].hidden = false;
+            loader_elm.hidden = true;
+            main_elm.hidden = false;
+        }
+        function backToSelection() {
+            const pack_no = getPackNumber();
+            pack_container.children[pack_no].hidden = true;
+            loader_elm.hidden = false;
+            main_elm.hidden = true;
+        }
+        function loadPackURI(pack_index) {
+            if (!confirm('Are you sure you want to leave the site?\nThis will take you to the turbowarp site with the extensions loaded.')) return '';
+            const pack = PACKS[pack_index];
+            var extension_prefix = 'extension=';
+            if (pack.uses_twu) {
+                extension_prefix = 'twu-'+extension_prefix
+            }
+            const extensions = pack.extensions;
+            const extension_urls = [];
+            for (extension in extensions) {
+                extension = extensions[extension];
+                extension_urls.push(extension.url);
+            }
+            for (let i = 1; i<extension_urls.length; i++) {
+                const url = encodeURIComponent(extension_urls[i]);
+                extension_urls[i] = '&'+extension_prefix+url;
+            }
+            extension_urls[0] = '?'+extension_prefix+encodeURIComponent(extension_urls[0]);
+            const final_url = 'https://turbowarp.org/editor'+extension_urls.join('');
+            window.location.href = final_url;
+        }
+    </script>
+</body>
+</html>
