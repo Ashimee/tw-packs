@@ -37,7 +37,7 @@
     <div id="loader">Load Pack:<br><select id="selector"></select><button class="button" onclick="loadPack()">Open Pack!</button></div>
     <div id="main" hidden>
         <div id="pack_container"></div><br>
-        <button onclick="backToSelection()" class="button"><img src="./arrow-bar-left.svg"></img> Back</button>
+        <button onclick="backToSelection()" class="button"><img src="./assets/arrow-bar-left.svg"></img> Back</button>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" crossorigin="anonymous"></script>
     <script>
@@ -224,13 +224,13 @@
             function icon(text, tooltip, condition){return(condition ? `<span title="${tooltip}">${text}&nbsp;&nbsp;</span>` : '')};
             if (!danger && !twu) return '';
             var icons = '';
-            icons += icon('<img src="./exclamation-circle-fill.svg"></img>', 'This extension-pack uses extensions that are considered dangerous.', danger);
-            icons += icon('<img src="./info-circle-fill.svg"></img>', 'This extension-pack uses extensions that are loader by an external loader called TurbowarpUnlocked.', twu);
+            icons += icon('<img src="./assets/exclamation-circle-fill.svg"></img>', 'This extension-pack uses extensions that are considered dangerous.', danger);
+            icons += icon('<img src="./assets/info-circle-fill.svg"></img>', 'This extension-pack uses extensions that are loader by an external loader called TurbowarpUnlocked.', twu);
             return icons;
         }
         function updateDropdownText(self) {
-            const CLOSE_ARROW = `close <img src="./arrows-angle-contract.svg"></img>`;
-            const OPEN_ARROW = `open <img src="./arrows-angle-expand.svg"></img>`;
+            const CLOSE_ARROW = `close <img src="./assets/arrows-angle-contract.svg"></img>`;
+            const OPEN_ARROW = `open <img src="./assets/arrows-angle-expand.svg"></img>`;
             if (!self.nextElementSibling.hidden) {
                 self.innerHTML = OPEN_ARROW;
             } else { self.innerHTML = CLOSE_ARROW };
