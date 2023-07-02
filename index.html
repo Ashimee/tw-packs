@@ -11,9 +11,12 @@
             margin: 0;
             padding: 0;
         }
-        body {
-            background-color: #000000;
-            color: white;
+        html {
+            background: #111;
+        }
+        :root {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #eee;
         }
         .button {
             background:    #666666;
@@ -32,9 +35,32 @@
             background: #5b5b5b;
         }
     </style>
+    <style>/* styles in this section are from turbowarp!!! */
+        .infobox-warning {
+            background-color: rgba(255, 0, 0, 0.245);
+            border-color: rgba(255, 0, 0, 0.446);
+        }
+        .infobox, .development-tools {
+            padding: 8px;
+            margin: 8px 0;
+            border-radius: 8px;
+            background: rgba(0, 195, 255, 0.245);
+            background-color: rgba(0, 195, 255, 0.245);
+            border: 1px solid rgba(0, 187, 255, 0.604);
+            border-top-color: rgba(0, 187, 255, 0.604);
+            border-right-color: rgba(0, 187, 255, 0.604);
+            border-bottom-color: rgba(0, 187, 255, 0.604);
+            border-left-color: rgba(0, 187, 255, 0.604);
+          }
+    </style>
 </head>
 <body>
-    <div id="loader">Load Pack:<br><select id="selector"></select><button class="button" onclick="loadPack()">Open Pack!</button></div>
+    <div id="loader">
+        <div class="infobox">
+            <div class="infobox-title">Help</div>
+            I need help making some packs, and also better styling, if you would like to help make a fork and a Pull Request with your changes!
+        </div>
+        Load Pack:<br><select id="selector"></select><button class="button" onclick="loadPack()">Open Pack!</button></div>
     <div id="main" hidden>
         <div id="pack_container"></div><br>
         <button onclick="backToSelection()" class="button"><img src="./bootstrap-assets/arrow-bar-left.svg"></img> Back</button>
